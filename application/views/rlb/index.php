@@ -31,6 +31,9 @@
               <br/>
               <div class="card-body">
                 <div class="tab-content" style="background-color: white;">
+                  <div>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Upload Data</button>
+                  </div>
                   <div class="tab-pane active" id="tab_1">
                     <table class="table table-bordered">
                       <thead>
@@ -50,7 +53,7 @@
                         ?>
                         <tr>
                           <td><?php echo $n++; ?></td>
-                          <td><?php echo $data->bulan; ?></td>
+                          <td><?php echo date('M-Y', ($data->bulan - 25569) * 86400); ?></td>
                           <td><?php echo $x1 = $data->jumlah_pelanggan; ?></td>
                           <td><?php echo $x2 = $data->jumlah_produk; ?></td>
                           <td><?php echo $y = $data->pendapatan; ?></td>
@@ -102,7 +105,7 @@
                         ?>
                         <tr>
                           <td><?php echo $n++; ?></td>
-                          <td><?php echo $data->bulan; ?></td>
+                          <td><?php echo date('M-Y', ($data->bulan - 25569) * 86400); ?></td>
                           <td><?php echo number_format($x1 = $data->jumlah_pelanggan); ?></td>
                           <td><?php echo number_format($x2 = $data->jumlah_produk); ?></td>
                           <td><?php echo number_format($y = $data->pendapatan); ?></td>
@@ -218,7 +221,7 @@
                         <?php 
                           $rumus = ($sigmay2 - ($a*$pendapatan) - ($b1 * $sigmax1y) - ($b2*$sigmax2y))/$n-3;
 
-                          echo sqrt($rumus);
+                          echo number_format(sqrt($rumus));
                         ?>
                       
                       </th>
@@ -243,3 +246,29 @@
  
 </body>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">FORM UPLOAD DATA RLB</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?= form_open_multipart('c_rlb/import'); ?>
+        <form method="post" action="<?= base_url() . 'c_rlb/import'; ?>">
+          <div class="form-group">
+            <label for="inputEmail3" class="control-label">Lampirkan File</label>
+            <input type="file" name="file" class="form-control" id="file" required accept=".xls, .xlsx, .csv" /></p>
+            <p class="help-block">Format file yang didukung .xls, .xlsx atau .csv</p>
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Upload" name="upload" id="upload">
+          </div>
+          <?= form_close(); ?>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
