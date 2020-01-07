@@ -24,17 +24,17 @@
                 <ul class="nav nav-pills ml-auto p-2" style="background-color: white;">
                   <li class="nav-item active"><a class="nav-link active" href="#tab_1" data-toggle="tab">Data</a></li>
                   <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Normalisasi</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Relasi Linear Berganda</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Standart Error Estimate</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Perhitungan Normalisasi</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#tab_y" data-toggle="tab">Relasi Linear Berganda</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <br/>
               <div class="card-body">
                 <div class="tab-content" style="background-color: white;">
+                  <div class="tab-pane active" id="tab_1">
                   <div>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Upload Data</button>
                   </div>
-                  <div class="tab-pane active" id="tab_1">
                     <table class="table table-bordered">
                       <thead>
                         <th>No</th>
@@ -161,8 +161,6 @@
                     $b2 = ($sigmax12*$sigmax2y) - ($sigmax1y*$sigmax1x2) / ($sigmax12*$sigmax22) - pow(abs($sigmax1x2), 2);
                     $a = ($b1 * $pelanggan) - ($b2 * $produk) - $pendapatan /$n;
 
-                    //Y
-                    $y = $a+($b1*$pelanggan)+($b2*$produk);
                     ?>
                     <table class="table">
                       <thead>
@@ -207,26 +205,54 @@
                         <td><?php echo number_format($a); ?></td>
                       </tr>
                       </tbody>
-                      <tfoot>
-                      <tr>
-                        <th>Y = <?php echo number_format($y); ?></th>
-                      </tr>
-                      </tfoot>
                     </table>
                   </div>
-                  <div class="tab-pane" id="tab_4">
-                  <table class="table">
-                    <tr>
-                      <th>Se(Syx) = 
-                        <?php 
-                          $rumus = ($sigmay2 - ($a*$pendapatan) - ($b1 * $sigmax1y) - ($b2*$sigmax2y))/$n-3;
+                  <div class="tab-pane" id="tab_y">
+                    <table class="table">
+                      <tr>
+                        <td>Masukan nilai X1 <input type="text" name="nilaix1" id="nilaix1" value="0" class="form-control"></td>
+                      </tr>
+                      <tr>
+                        <td>Masukan nilai X2 <input type="text" name="nilaix2" id="nilaix2" value="0" class="form-control"></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <img src="<?php echo base_url('assets/img/rumusY.png') ?>">
+                          <a onclick="munculY()" class="btn btn-warning">Lihat Hasil dari Y</a>
+                          <input type="text" disabled id="output" value="0" class="form-control">
+                          <script>
+                              function munculY(){
+                                var a       = Number('<?php echo $a ?>');
+                                var b1      = Number('<?php echo $b1 ?>');
+                                var b2      = Number('<?php echo $b2 ?>');
+                                var nilaix1 = Number(document.getElementById("nilaix1").value);
+                                var nilaix2 = Number(document.getElementById("nilaix2").value);
 
-                          echo number_format(sqrt($rumus));
-                        ?>
-                      
-                      </th>
-                    </tr>
-                  </table>
+                                rumus = a+(b1*nilaix1)+(b2*nilaix2);
+                                //rumus = nilaix2+nilaix1;
+                                document.getElementById("output").value = parseFloat(rumus);
+                              }
+                          </script>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td> 
+                          <?php 
+                            $rumus = ($sigmay2 - ($a*$pendapatan) - ($b1 * $sigmax1y) - ($b2*$sigmax2y))/$n-3;
+
+                            $sesyx = number_format(sqrt($rumus));
+                          ?>
+                          <img src="<?php echo base_url('assets/img/rumusSeSyx.png') ?>">
+                          <a onclick="munculSeSyx()" class="btn btn-warning">Lihat Standart Error Estimate</a>
+                          <input type="text" disabled id="output2" value="0" class="form-control">
+                          <script>
+                              function munculSeSyx(){
+                                document.getElementById("output2").value = "<?php echo $sesyx ?>";
+                              }
+                          </script>
+                        </td>
+                      </tr>
+                    </table>
                   </div>
                   <!-- /.tab-pane -->
 
