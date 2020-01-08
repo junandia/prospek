@@ -10,7 +10,9 @@
 		}
 
 		public function getAll(){
-			return $this->db->get('data_rlb')->result();
+			$this->db->from('data_rlb');
+			$this->db->order_by('bulan','ASC');
+			return $this->db->get()->result();
 		}
 
 		public function count(){
