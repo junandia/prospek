@@ -26,6 +26,7 @@
                   <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Normalisasi</a></li>
                   <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Perhitungan Normalisasi</a></li>
                   <li class="nav-item"><a class="nav-link" href="#tab_y" data-toggle="tab">Relasi Linear Berganda</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#chart" data-toggle="tab">Chart</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <br/>
@@ -254,6 +255,19 @@
                       </tr>
                     </table>
                   </div>
+                  <div class="tab-pane" id="chart">
+                    <div class="container">
+                      <br />
+                      <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                    <!--       Chart.js Canvas Tag -->
+                          <canvas id="barChart"></canvas>
+                        </div>
+                        <div class="col-md-1"></div>
+                      </div>
+                    </div>
+                  </div>
                   <!-- /.tab-pane -->
 
                 </div>
@@ -298,3 +312,125 @@
   </div>
 </div>
 </div>
+<script src="<?php echo base_url()?>assets/chartjs/Chart.js"></script>
+
+<script type="text/javascript">
+  var canvas = document.getElementById("barChart");
+  var ctx = canvas.getContext('2d');
+
+  // Global Options:
+  Chart.defaults.global.defaultFontColor = 'black';
+  Chart.defaults.global.defaultFontSize = 16;
+
+  var data = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: [{
+        label: "Jumlah Pelanggan",
+        fill: false,
+        lineTension: 0.1,
+        //backgroundColor: "rgba(225,0,0,0.4)",
+        borderColor: "red", // The main line color
+        borderCapStyle: 'square',
+        borderDash: [], // try [5, 15] for instance
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "black",
+        pointBackgroundColor: "white",
+        pointBorderWidth: 1,
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: "yellow",
+        pointHoverBorderColor: "brown",
+        pointHoverBorderWidth: 2,
+        pointRadius: 4,
+        pointHitRadius: 10,
+        // notice the gap in the data and the spanGaps: true
+        data: [<?php 
+          foreach ($rlb as $data) {
+            echo $data->jumlah_pelanggan.',';
+          }
+         ?>],
+        spanGaps: true,
+      }, {
+        label: "Jumlah Produk",
+        fill: true,
+        lineTension: 0.1,
+        //backgroundColor: "rgba(167,105,0,0.4)",
+        borderColor: "blue",
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "white",
+        pointBackgroundColor: "black",
+        pointBorderWidth: 1,
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: "brown",
+        pointHoverBorderColor: "yellow",
+        pointHoverBorderWidth: 2,
+        pointRadius: 4,
+        pointHitRadius: 10,
+        // notice the gap in the data and the spanGaps: false
+        data: [
+          <?php 
+          foreach ($rlb as $data) {
+            echo $data->jumlah_produk.',';
+          }
+         ?>
+        ],
+        spanGaps: false,
+      }, {
+        label: "Pendapatan",
+        fill: true,
+        lineTension: 0.1,
+        //backgroundColor: "rgba(167,105,0,0.4)",
+        borderColor: "green",
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "white",
+        pointBackgroundColor: "black",
+        pointBorderWidth: 1,
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: "brown",
+        pointHoverBorderColor: "yellow",
+        pointHoverBorderWidth: 2,
+        pointRadius: 4,
+        pointHitRadius: 10,
+        // notice the gap in the data and the spanGaps: false
+        data: [
+          <?php 
+          foreach ($rlb as $data) {
+            echo $data->pendapatan.',';
+          }
+         ?>
+        ],
+        spanGaps: false,
+      }
+
+    ]
+  };
+
+  // Notice the scaleLabel at the same level as Ticks
+  var options = {
+    scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  },
+                  scaleLabel: {
+                       display: true,
+                       labelString: 'Relasi Linear Berganda',
+                       fontSize: 20 
+                    }
+              }]            
+          }  
+  };
+
+  // Chart declaration:
+  var myBarChart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: options
+  });
+</script>
