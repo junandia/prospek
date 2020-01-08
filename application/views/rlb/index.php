@@ -211,10 +211,10 @@
                   <div class="tab-pane" id="tab_y">
                     <table class="table">
                       <tr>
-                        <td>Masukan nilai X1 <input type="text" name="nilaix1" id="nilaix1" value="0" class="form-control"></td>
+                        <td>Masukan nilai X1 <input type="number" name="nilaix1" id="nilaix1" value="0" class="form-control"></td>
                       </tr>
                       <tr>
-                        <td>Masukan nilai X2 <input type="text" name="nilaix2" id="nilaix2" value="0" class="form-control"></td>
+                        <td>Masukan nilai X2 <input type="number" name="nilaix2" id="nilaix2" value="0" class="form-control"></td>
                       </tr>
                       <tr>
                         <td>
