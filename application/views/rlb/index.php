@@ -323,7 +323,13 @@
   Chart.defaults.global.defaultFontSize = 16;
 
   var data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: [
+      <?php 
+          foreach ($rlb as $data) {
+            echo '"'.date('M-Y', ($data->bulan - 25569) * 86400).'",';
+          }
+      ?>
+    ],
     datasets: [{
         label: "Jumlah Pelanggan",
         fill: false,
@@ -377,7 +383,7 @@
           }
          ?>
         ],
-        spanGaps: false,
+        spanGaps: true,
       }, {
         label: "Pendapatan",
         fill: true,
@@ -405,7 +411,7 @@
           }
          ?>
         ],
-        spanGaps: false,
+        spanGaps: true,
       }
 
     ]
