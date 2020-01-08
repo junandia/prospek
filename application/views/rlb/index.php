@@ -1,6 +1,8 @@
 <style type="text/css">
   th{
     text-align: center;
+    background-color: black;
+    color: white;
   }
 </style>
 
@@ -34,7 +36,7 @@
                 <div class="tab-content" style="background-color: white;">
                   <div class="tab-pane active" id="tab_1">
                   <div>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Upload Data</button>
+                    <button class="btn btn-primary" style="margin: 10px 10px 10px 10px;" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Upload Data</button>
                   </div>
                     <table class="table table-bordered">
                       <thead>
