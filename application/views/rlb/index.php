@@ -170,7 +170,7 @@
                       array($produk, $sigmax1x2, $sigmax22)
                     );
 
-                    $deta = ($matrixdeta[0][0] * $matrixdeta[1][1]) + ($matrixdeta[0][1] * $matrixdeta[1][2]) + ($matrixdeta[0][2] * $matrixdeta[1][0]) + ($matrixdeta[1][1] * $matrixdeta[2][2]) + ($matrixdeta[1][2] * $matrixdeta[2][0]) + ($matrixdeta[1][0] * $matrixdeta[1][1] * $matrixdeta[2][1]) - ($matrixdeta[0][2] * $matrixdeta[1][1]) - ($matrixdeta[0][0] * $matrixdeta[1][2]) - ($matrixdeta[0][1] * $matrixdeta[1][0]) - ($matrixdeta[1][1] * $matrixdeta[2][0]) - ($matrixdeta[1][2] * $matrixdeta[2][1]) - ($matrixdeta[1][0] * $matrixdeta[2][2]);
+                    $deta = ($matrixdeta[0][0] * $matrixdeta[1][1] * $matrixdeta[2][2]) + ($matrixdeta[0][1] * $matrixdeta[1][2] * $matrixdeta[2][0]) + ($matrixdeta[0][2] * $matrixdeta[1][0] * $matrixdeta[2][1]) - ($matrixdeta[0][1] * $matrixdeta[1][0] * $matrixdeta[2][2]) - ($matrixdeta[0][0] * $matrixdeta[1][2] * $matrixdeta[2][1]) - ($matrixdeta[0][2] * $matrixdeta[1][1] * $matrixdeta[2][0]);
 
 
                     $matrixdeta1 = array(
@@ -179,7 +179,7 @@
                       array($sigmax2y, $sigmax1x2, $sigmax22)
                     );
 
-                    $deta1 = ($matrixdeta1[0][0] * $matrixdeta1[1][1]) + ($matrixdeta1[0][1] * $matrixdeta1[1][2]) + ($matrixdeta1[0][2] * $matrixdeta1[1][0]) + ($matrixdeta1[1][1] * $matrixdeta1[2][2]) + ($matrixdeta1[1][2] * $matrixdeta1[2][0]) + ($matrixdeta1[1][0] * $matrixdeta1[1][1] * $matrixdeta1[2][1]) - ($matrixdeta1[0][2] * $matrixdeta1[1][1]) - ($matrixdeta1[0][0] * $matrixdeta1[1][2]) - ($matrixdeta1[0][1] * $matrixdeta1[1][0]) - ($matrixdeta1[1][1] * $matrixdeta1[2][0]) - ($matrixdeta1[1][2] * $matrixdeta1[2][1]) - ($matrixdeta1[1][0] * $matrixdeta1[2][2]);
+                    $deta1 = ($matrixdeta1[0][0] * $matrixdeta1[1][1] * $matrixdeta1[2][2]) + ($matrixdeta1[0][1] * $matrixdeta1[1][2] * $matrixdeta1[2][0]) + ($matrixdeta1[0][2] * $matrixdeta1[1][0] * $matrixdeta1[2][1]) - ($matrixdeta1[0][1] * $matrixdeta1[1][0] * $matrixdeta1[2][2]) - ($matrixdeta1[0][0] * $matrixdeta1[1][2] * $matrixdeta1[2][1]) - ($matrixdeta1[0][2] * $matrixdeta1[1][1] * $matrixdeta1[2][0]);
 
                     $matrixdeta2 = array(
                       array($n, $pendapatan, $produk),
@@ -187,7 +187,7 @@
                       array($produk, $sigmax2y, $sigmax22)
                     );
 
-                    $deta2 = ($matrixdeta2[0][0] * $matrixdeta2[1][1]) + ($matrixdeta2[0][1] * $matrixdeta2[1][2]) + ($matrixdeta2[0][2] * $matrixdeta2[1][0]) + ($matrixdeta2[1][1] * $matrixdeta2[2][2]) + ($matrixdeta2[1][2] * $matrixdeta2[2][0]) + ($matrixdeta2[1][0] * $matrixdeta2[1][1] * $matrixdeta2[2][1]) - ($matrixdeta2[0][2] * $matrixdeta2[1][1]) - ($matrixdeta2[0][0] * $matrixdeta2[1][2]) - ($matrixdeta2[0][1] * $matrixdeta2[1][0]) - ($matrixdeta2[1][1] * $matrixdeta2[2][0]) - ($matrixdeta2[1][2] * $matrixdeta2[2][1]) - ($matrixdeta2[1][0] * $matrixdeta2[2][2]);
+                    $deta2 = ($matrixdeta2[0][0] * $matrixdeta2[1][1] * $matrixdeta2[2][2]) + ($matrixdeta2[0][1] * $matrixdeta2[1][2] * $matrixdeta2[2][0]) + ($matrixdeta2[0][2] * $matrixdeta2[1][0] * $matrixdeta2[2][1]) - ($matrixdeta2[0][1] * $matrixdeta2[1][0] * $matrixdeta2[2][2]) - ($matrixdeta2[0][0] * $matrixdeta2[1][2] * $matrixdeta2[2][1]) - ($matrixdeta2[0][2] * $matrixdeta2[1][1] * $matrixdeta2[2][0]);
 
                     $matrixdeta3 = array(
                       array($n, $pelanggan, $pendapatan),
@@ -195,7 +195,7 @@
                       array($produk, $sigmax1x2, $sigmax2y)
                     );
 
-                    $deta3 = ($matrixdeta3[0][0] * $matrixdeta3[1][1]) + ($matrixdeta3[0][1] * $matrixdeta3[1][2]) + ($matrixdeta3[0][2] * $matrixdeta3[1][0]) + ($matrixdeta3[1][1] * $matrixdeta3[2][2]) + ($matrixdeta3[1][2] * $matrixdeta3[2][0]) + ($matrixdeta3[1][0] * $matrixdeta3[1][1] * $matrixdeta3[2][1]) - ($matrixdeta3[0][2] * $matrixdeta3[1][1]) - ($matrixdeta3[0][0] * $matrixdeta3[1][2]) - ($matrixdeta3[0][1] * $matrixdeta3[1][0]) - ($matrixdeta3[1][1] * $matrixdeta3[2][0]) - ($matrixdeta3[1][2] * $matrixdeta3[2][1]) - ($matrixdeta3[1][0] * $matrixdeta3[2][2]);
+                    $deta3 = ($matrixdeta3[0][0] * $matrixdeta3[1][1] * $matrixdeta3[2][2]) + ($matrixdeta3[0][1] * $matrixdeta3[1][2] * $matrixdeta3[2][0]) + ($matrixdeta3[0][2] * $matrixdeta3[1][0] * $matrixdeta3[2][1]) - ($matrixdeta3[0][1] * $matrixdeta3[1][0] * $matrixdeta3[2][2]) - ($matrixdeta3[0][0] * $matrixdeta3[1][2] * $matrixdeta3[2][1]) - ($matrixdeta3[0][2] * $matrixdeta3[1][1] * $matrixdeta3[2][0]);
 
 
                     $a  = $deta1 / $deta;
