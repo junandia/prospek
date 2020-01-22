@@ -64,4 +64,4 @@ class C_rlb extends CI_Controller{
 				redirect('C_rlb');
 			}
 		}
-}
+	}
