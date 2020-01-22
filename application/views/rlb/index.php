@@ -166,41 +166,44 @@
 
                     $matrixdeta = array(
                       array($n, $pelanggan, $produk),
-                      array($pelanggan, $sigmax12, $sigmax1x2),
-                      array($produk, $sigmax1x2, $sigmax22)
+                      array($pelanggan, $totx12, $totx1x2),
+                      array($produk, $totx1x2, $totx22)
                     );
 
                     $deta = $this->m_rlb->matrixdet($matrixdeta);
-
+                    //echo "<script>alert('".$deta."')</script>";
 
                     $matrixdeta1 = array(
                       array($pendapatan, $pelanggan, $produk),
-                      array($sigmax1y, $sigmax12, $sigmax1x2),
-                      array($sigmax2y, $sigmax1x2, $sigmax22)
+                      array($totx1xy, $totx12, $totx1x2),
+                      array($totx2xy, $totx1x2, $totx22)
                     );
 
                     $deta1 = $this->m_rlb->matrixdet($matrixdeta1);
+                    //echo "<script>alert('".number_format($deta1)."')</script>";
 
                     $matrixdeta2 = array(
                       array($n, $pendapatan, $produk),
-                      array($pelanggan, $sigmax1y, $sigmax1x2),
-                      array($produk, $sigmax2y, $sigmax22)
+                      array($pelanggan, $totx1xy, $totx1x2),
+                      array($produk, $totx2xy, $totx22)
                     );
 
                     $deta2 = $this->m_rlb->matrixdet($matrixdeta2);
+                    //echo "<script>alert('".number_format($deta2)."')</script>";
 
                     $matrixdeta3 = array(
                       array($n, $pelanggan, $pendapatan),
-                      array($pelanggan, $sigmax12, $sigmax1y),
-                      array($produk, $sigmax1x2, $sigmax2y)
+                      array($pelanggan, $totx12, $totx1xy),
+                      array($produk, $totx1x2, $totx2xy)
                     );
 
                     $deta3 = $this->m_rlb->matrixdet($matrixdeta3);
+                    //echo "<script>alert('".number_format($deta3)."')</script>";
 
 
-                    $a  = $deta1 / $deta;
-                    $b1 = $deta2 / $deta;
-                    $b2 = $deta3 / $deta;
+                    $a  = $deta1/$deta;
+                    $b1 = $deta2/$deta;
+                    $b2 = $deta3/$deta;
                     ?>
                     <table class="table">
                       <thead>
@@ -233,16 +236,32 @@
                         <td><?php echo number_format($sigmax1x2); ?></td>
                       </tr>
                       <tr>
+                        <td>Det(A)</td>
+                        <td><?php echo number_format($deta); ?></td>
+                      </tr> 
+                      <tr>
+                        <td>Det(A1)</td>
+                        <td><?php echo number_format($deta1); ?></td>
+                      </tr> 
+                      <tr>
+                        <td>Det(A2)</td>
+                        <td><?php echo number_format($deta2); ?></td>
+                      </tr> 
+                      <tr>
+                        <td>Det(A3)</td>
+                        <td><?php echo number_format($deta3); ?></td>
+                      </tr> 
+                      <tr>
                         <td>a</td>
-                        <td><?php echo number_format($a); ?></td>
+                        <td><?php echo $a; ?></td>
                       </tr>                      
                       <tr>
                         <td>B1</td>
-                        <td><?php echo number_format($b1); ?></td>
+                        <td><?php echo $b1; ?></td>
                       </tr>
                       <tr>
                         <td>B2</td>
-                        <td><?php echo number_format($b2); ?></td>
+                        <td><?php echo $b2; ?></td>
                       </tr>
                       </tbody>
                     </table>
