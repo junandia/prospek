@@ -160,10 +160,47 @@
 
 
                     //rumus tahap3
-                    $b1 = ($sigmax22*$sigmax1y) - ($sigmax2y*$sigmax1x2) / ($sigmax12*$sigmax22) - pow(abs($sigmax1x2), 2);
-                    $b2 = ($sigmax12*$sigmax2y) - ($sigmax1y*$sigmax1x2) / ($sigmax12*$sigmax22) - pow(abs($sigmax1x2), 2);
-                    $a = ($b1 * $pelanggan) - ($b2 * $produk) - $pendapatan /$n;
+                    //$b1 = ($sigmax22*$sigmax1y) - ($sigmax2y*$sigmax1x2) / ($sigmax12*$sigmax22) - pow(abs($sigmax1x2), 2);
+                    //$b2 = ($sigmax12*$sigmax2y) - ($sigmax1y*$sigmax1x2) / ($sigmax12*$sigmax22) - pow(abs($sigmax1x2), 2);
+                    //$a = ($b1 * $pelanggan) - ($b2 * $produk) - $pendapatan /$n;
 
+                    $matrixdeta = array(
+                      array($n, $pelanggan, $produk),
+                      array($pelanggan, $sigmax12, $sigmax1x2),
+                      array($produk, $sigmax1x2, $sigmax22)
+                    );
+
+                    $deta = ($matrixdeta[0][0] * $matrixdeta[1][1]) + ($matrixdeta[0][1] * $matrixdeta[1][2]) + ($matrixdeta[0][2] * $matrixdeta[1][0]) + ($matrixdeta[1][1] * $matrixdeta[2][2]) + ($matrixdeta[1][2] * $matrixdeta[2][0]) + ($matrixdeta[1][0] * $matrixdeta[1][1] * $matrixdeta[2][1]) - ($matrixdeta[0][2] * $matrixdeta[1][1]) - ($matrixdeta[0][0] * $matrixdeta[1][2]) - ($matrixdeta[0][1] * $matrixdeta[1][0]) - ($matrixdeta[1][1] * $matrixdeta[2][0]) - ($matrixdeta[1][2] * $matrixdeta[2][1]) - ($matrixdeta[1][0] * $matrixdeta[2][2]);
+
+
+                    $matrixdeta1 = array(
+                      array($pendapatan, $pelanggan, $produk),
+                      array($sigmax1y, $sigmax12, $sigmax1x2),
+                      array($sigmax2y, $sigmax1x2, $sigmax22)
+                    );
+
+                    $deta1 = ($matrixdeta1[0][0] * $matrixdeta1[1][1]) + ($matrixdeta1[0][1] * $matrixdeta1[1][2]) + ($matrixdeta1[0][2] * $matrixdeta1[1][0]) + ($matrixdeta1[1][1] * $matrixdeta1[2][2]) + ($matrixdeta1[1][2] * $matrixdeta1[2][0]) + ($matrixdeta1[1][0] * $matrixdeta1[1][1] * $matrixdeta1[2][1]) - ($matrixdeta1[0][2] * $matrixdeta1[1][1]) - ($matrixdeta1[0][0] * $matrixdeta1[1][2]) - ($matrixdeta1[0][1] * $matrixdeta1[1][0]) - ($matrixdeta1[1][1] * $matrixdeta1[2][0]) - ($matrixdeta1[1][2] * $matrixdeta1[2][1]) - ($matrixdeta1[1][0] * $matrixdeta1[2][2]);
+
+                    $matrixdeta2 = array(
+                      array($n, $pendapatan, $produk),
+                      array($pelanggan, $sigmax1y, $sigmax1x2),
+                      array($produk, $sigmax2y, $sigmax22)
+                    );
+
+                    $deta2 = ($matrixdeta2[0][0] * $matrixdeta2[1][1]) + ($matrixdeta2[0][1] * $matrixdeta2[1][2]) + ($matrixdeta2[0][2] * $matrixdeta2[1][0]) + ($matrixdeta2[1][1] * $matrixdeta2[2][2]) + ($matrixdeta2[1][2] * $matrixdeta2[2][0]) + ($matrixdeta2[1][0] * $matrixdeta2[1][1] * $matrixdeta2[2][1]) - ($matrixdeta2[0][2] * $matrixdeta2[1][1]) - ($matrixdeta2[0][0] * $matrixdeta2[1][2]) - ($matrixdeta2[0][1] * $matrixdeta2[1][0]) - ($matrixdeta2[1][1] * $matrixdeta2[2][0]) - ($matrixdeta2[1][2] * $matrixdeta2[2][1]) - ($matrixdeta2[1][0] * $matrixdeta2[2][2]);
+
+                    $matrixdeta3 = array(
+                      array($n, $pelanggan, $pendapatan),
+                      array($pelanggan, $sigmax12, $sigmax1y),
+                      array($produk, $sigmax1x2, $sigmax2y)
+                    );
+
+                    $deta3 = ($matrixdeta3[0][0] * $matrixdeta3[1][1]) + ($matrixdeta3[0][1] * $matrixdeta3[1][2]) + ($matrixdeta3[0][2] * $matrixdeta3[1][0]) + ($matrixdeta3[1][1] * $matrixdeta3[2][2]) + ($matrixdeta3[1][2] * $matrixdeta3[2][0]) + ($matrixdeta3[1][0] * $matrixdeta3[1][1] * $matrixdeta3[2][1]) - ($matrixdeta3[0][2] * $matrixdeta3[1][1]) - ($matrixdeta3[0][0] * $matrixdeta3[1][2]) - ($matrixdeta3[0][1] * $matrixdeta3[1][0]) - ($matrixdeta3[1][1] * $matrixdeta3[2][0]) - ($matrixdeta3[1][2] * $matrixdeta3[2][1]) - ($matrixdeta3[1][0] * $matrixdeta3[2][2]);
+
+
+                    $a  = $deta1 / $deta;
+                    $b1 = $deta2 / $deta;
+                    $b2 = $deta3 / $deta;
                     ?>
                     <table class="table">
                       <thead>
@@ -196,16 +233,16 @@
                         <td><?php echo number_format($sigmax1x2); ?></td>
                       </tr>
                       <tr>
+                        <td>a</td>
+                        <td><?php echo number_format($a); ?></td>
+                      </tr>                      
+                      <tr>
                         <td>B1</td>
                         <td><?php echo number_format($b1); ?></td>
                       </tr>
                       <tr>
                         <td>B2</td>
                         <td><?php echo number_format($b2); ?></td>
-                      </tr>
-                      <tr>
-                        <td>a</td>
-                        <td><?php echo number_format($a); ?></td>
                       </tr>
                       </tbody>
                     </table>
