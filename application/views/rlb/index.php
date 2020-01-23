@@ -295,18 +295,23 @@
                         </td>
                       </tr>
                       <tr>
-                        <td> 
-                          <?php 
-                            $rumus = ($sigmay2 - ($a*$pendapatan) - ($b1 * $sigmax1y) - ($b2*$sigmax2y))/$n-3;
-
-                            $sesyx = number_format(sqrt($rumus));
-                          ?>
+                        <td>
                           <img src="<?php echo base_url('assets/img/rumusSeSyx.png') ?>">
                           <a onclick="munculSeSyx()" class="btn btn-warning">Lihat Standart Error Estimate</a>
                           <input type="text" disabled id="output2" value="0" class="form-control">
                           <script>
                               function munculSeSyx(){
-                                document.getElementById("output2").value = "<?php echo $sesyx ?>";
+                                var sigmay2     = Number('<?php echo $toty2 ?>');
+                                var a           = Number('<?php echo $a ?>');
+                                var pendapatan  = Number('<?php echo $pendapatan ?>');
+                                var b1          = Number('<?php echo $b1 ?>');
+                                var sigmax1y    = Number('<?php echo $sigmax1y ?>');
+                                var b2          = Number('<?php echo $b2 ?>');
+                                var sigmax2y    = Number('<?php echo $sigmax2y ?>');
+                                var n           = Number('<?php echo $n ?>');
+                                var rumus       = (sigmay2-(a*pendapatan)-(b1*sigmax1y)-(b2*sigmax2y))/n-3;
+
+                                document.getElementById("output2").value = Math.sqrt(parseFloat(rumus));
                               }
                           </script>
                         </td>
