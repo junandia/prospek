@@ -150,12 +150,12 @@
     ],
     datasets: [{
         label: "Pendapatan",
-        fill: true,
+        fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(225,0,0,0.4)",
         borderColor: "red", // The main line color
         borderCapStyle: 'square',
-        borderDash: [5,10], // try [5, 15] for instance
+        borderDash: [], // try [5, 15] for instance
         borderDashOffset: 0.0,
         borderJoinStyle: 'miter',
         pointBorderColor: "black",
@@ -226,12 +226,12 @@
     ],
     datasets: [{
         label: "Pendapatan",
-        fill: true,
+        fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(0, 0, 255, 0.4)",
         borderColor: "blue", // The main line color
         borderCapStyle: 'square',
-        borderDash: [5,15], // try [5, 15] for instance
+        borderDash: [], // try [5, 15] for instance
         borderDashOffset: 1.0,
         borderJoinStyle: 'miter',
         pointBorderColor: "black",
