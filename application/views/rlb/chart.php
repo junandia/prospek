@@ -144,7 +144,7 @@
     labels: [
       <?php 
           foreach ($rlb as $data) {
-            echo $data->jumlah_pelanggan.",";
+            echo '"'.date('M-Y', ($data->bulan - 25569) * 86400).' : '.$data->jumlah_pelanggan.'",';
           }
       ?>
     ],
@@ -220,7 +220,7 @@
     labels: [
       <?php 
           foreach ($rlb as $data) {
-            echo $data->jumlah_produk.",";
+            echo '"'.date('M-Y', ($data->bulan - 25569) * 86400).' : '.$data->jumlah_produk.'",';
           }
       ?>
     ],
